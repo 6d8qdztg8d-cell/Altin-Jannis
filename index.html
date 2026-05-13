@@ -223,11 +223,7 @@
 
     /* Horizontal scroll rail */
     .ls-rail-wrap { position:relative; }
-    .ls-rail-wrap::before,.ls-rail-wrap::after {
-      content:''; position:absolute; top:0; bottom:32px; width:56px; z-index:2; pointer-events:none;
-    }
-    .ls-rail-wrap::before { left:0; background:linear-gradient(to right, var(--c-paper), transparent); }
-    .ls-rail-wrap::after  { right:0; background:linear-gradient(to left, var(--c-paper), transparent); }
+    .ls-rail-wrap::before,.ls-rail-wrap::after { display:none; }
     .ls-rail {
       display:flex; gap:20px;
       overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
@@ -309,11 +305,7 @@
     #warum-wir .sec-title-c { color:var(--c-white); }
     #warum-wir .sec-sub-c { color:rgba(255,255,255,.45); }
     .ww-rail-wrap { position:relative; }
-    .ww-rail-wrap::before,.ww-rail-wrap::after {
-      content:''; position:absolute; top:0; bottom:32px; width:56px; z-index:2; pointer-events:none;
-    }
-    .ww-rail-wrap::before { left:0; background:linear-gradient(to right, var(--c-deep), transparent); }
-    .ww-rail-wrap::after  { right:0; background:linear-gradient(to left, var(--c-deep), transparent); }
+    .ww-rail-wrap::before,.ww-rail-wrap::after { display:none; }
     .ww-rail {
       display:flex; gap:20px;
       overflow-x:auto; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch;
@@ -559,8 +551,6 @@
       .ls-card { flex: 0 0 260px; height: 340px; }
       .ls-cta { flex: 0 0 240px; height: 340px; }
       .ww-card { flex: 0 0 260px; }
-      .ls-rail-wrap::before, .ls-rail-wrap::after,
-      .ww-rail-wrap::before, .ww-rail-wrap::after { width: 20px; }
 
       /* Arbeitsweise CTA */
       .aw-cta { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 36px; }
