@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8"/>
+<title>Flyer – Altin & Jannis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,600;0,700;0,800;0,900;1,700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"/>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:      #0b1e12;
+  --card:    #102918;
+  --card2:   #0d2214;
+  --green:   #4caf77;
+  --dkgreen: #1a5c35;
+  --white:   #ffffff;
+  --grey:    #8db09e;
+  --lgrey:   #c8dcd2;
+}
+
+body {
+  background: #181818;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
+  padding: 48px 0 64px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* ── PAGE shell ─────────────────────────────── */
+.page {
+  width: 600px;
+  height: 850px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Top accent ─────────────────────────────── */
+.top-bar { height: 5px; background: var(--green); flex-shrink: 0; }
+
+/* ── Page header ────────────────────────────── */
+.ph {
+  text-align: center;
+  padding: 16px 32px 0;
+  flex-shrink: 0;
+}
+.ph-tag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 7.5px; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 10px;
+}
+.ph-title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900; color: var(--white);
+  letter-spacing: -.02em; line-height: 1;
+  margin-bottom: 7px;
+}
+.ph-title em { color: var(--green); font-style: italic; }
+.ph-sub { font-size: 9.5px; color: var(--grey); letter-spacing: .03em; }
+.rule {
+  margin: 13px 32px 0;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--green) 30%, var(--green) 70%, transparent);
+  flex-shrink: 0;
+}
+
+/* ── Deco glows ─────────────────────────────── */
+.deco { position: absolute; border-radius: 50%; pointer-events: none; }
+
+/* ══════════════════════════════════════════════
+   PAGE 1
+══════════════════════════════════════════════ */
+.p1 { flex: 1; display: flex; flex-direction: column; padding: 0 30px 0; gap: 10px; padding-top: 16px; }
+
+/* Two portraits side by side */
+.portraits {
+  display: flex;
+  justify-content: center;
+  gap: 36px;
+  flex-shrink: 0;
+}
+.portrait-col { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+.portrait-ring {
+  width: 158px; height: 158px; border-radius: 50%;
+  border: 3px solid var(--green);
+  padding: 4px; background: var(--bg);
+  box-shadow: 0 0 0 7px rgba(76,175,119,.1), 0 12px 36px rgba(0,0,0,.5);
+}
+.portrait-ring img {
+  width: 100%; height: 100%;
+  border-radius: 50%; object-fit: cover; object-position: center top; display: block;
+}
+.p-name { font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 15px; color: var(--white); }
+.p-detail { font-size: 9px; color: var(--green); letter-spacing: .04em; }
+.p-hobby  { font-size: 8px; color: var(--grey); }
+
+/* Garden hero image */
+.hero-img {
+  border-radius: 10px; overflow: hidden; flex-shrink: 0;
+}
+.hero-img img { width: 100%; height: 82px; object-fit: cover; display: block; }
+
+/* Intro text */
+.intro {
+  background: var(--card); border-radius: 10px;
+  padding: 14px 16px; border-left: 3px solid var(--green);
+  flex-shrink: 0;
+}
+.intro p { font-size: 9.5px; color: var(--lgrey); line-height: 1.78; }
+
+/* Quote */
+.quote {
+  background: var(--dkgreen); border-radius: 10px;
+  padding: 13px 18px; text-align: center;
+  border-left: 3px solid rgba(76,175,119,.5);
+  flex-shrink: 0;
+}
+.quote-text {
+  font-family: 'Montserrat', sans-serif; font-style: italic;
+  font-size: 11.5px; font-weight: 700; color: var(--white); margin-bottom: 4px;
+}
+.quote-by { font-size: 7.5px; color: var(--grey); letter-spacing: .06em; }
+
+/* P1 contact strip */
+.cs {
+  background: var(--dkgreen);
+  border-top: 2px solid var(--green);
+  padding: 13px 30px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+.cs-col {}
+.cs-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 6px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--green); margin-bottom: 5px;
+}
+.cs-val { font-size: 8.5px; color: var(--white); line-height: 1.75; }
+.cs-val .m { color: var(--grey); }
+
+/* ══════════════════════════════════════════════
+   PAGE 2
+══════════════════════════════════════════════ */
+.p2 { flex: 1; display: flex; flex-direction: column; padding: 14px 30px 0; gap: 10px; }
+
+/* Services 2-col grid */
+.svc-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 7px; flex-shrink: 0;
+}
+.svc {
+  background: var(--card); border-radius: 8px;
+  padding: 9px 11px; display: flex; gap: 9px; align-items: flex-start;
+}
+.svc-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--green); flex-shrink: 0; margin-top: 4px;
+}
+.svc-title { font-family: 'Montserrat', sans-serif; font-size: 8.5px; font-weight: 700; color: var(--white); margin-bottom: 2px; }
+.svc-desc  { font-size: 7px; color: var(--grey); line-height: 1.4; }
+
+/* Photo strip — 3 slim images */
+.photo-strip {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 7px; flex-shrink: 0;
+}
+.photo-strip img {
+  width: 100%; height: 58px;
+  object-fit: cover; border-radius: 7px; display: block;
+}
+
+/* Rule */
+.hrule { height: 1px; background: linear-gradient(to right,transparent,rgba(76,175,119,.35),transparent); flex-shrink:0; }
+
+/* Warum wir */
+.ww-head { flex-shrink: 0; }
+.ww-tag { font-family:'Montserrat',sans-serif; font-size:7px; font-weight:700; letter-spacing:.18em; text-transform:uppercase; color:var(--green); margin-bottom:4px; }
+.ww-title { font-family:'Montserrat',sans-serif; font-weight:800; font-size:14px; color:var(--white); }
+
+.reasons {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 7px; flex-shrink: 0;
+}
+.reason {
+  background: var(--card); border-radius: 8px;
+  padding: 11px 10px; border-top: 2.5px solid var(--green); text-align: center;
+}
+.r-title { font-family:'Montserrat',sans-serif; font-size:8.5px; font-weight:800; color:var(--white); margin-bottom:5px; }
+.r-desc  { font-size:7px; color:var(--grey); line-height:1.55; }
+
+/* Contact info block (print-friendly, no CTA) */
+.contact-block {
+  background: var(--card2); border-radius: 10px;
+  border-left: 3px solid var(--green);
+  padding: 14px 18px;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+.cb-title {
+  font-family:'Montserrat',sans-serif; font-weight:800; font-size:11px;
+  color:var(--white); margin-bottom:10px;
+}
+.cb-grid {
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;
+}
+.cb-item {}
+.cb-label {
+  font-family:'Montserrat',sans-serif; font-size:6px; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; color:var(--green); margin-bottom:4px;
+}
+.cb-val { font-size:8.5px; color:var(--lgrey); line-height:1.7; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     SEITE 1 — VORSTELLUNG
+══════════════════════════════════════════ -->
+<div class="page">
+  <div class="deco" style="width:220px;height:220px;background:radial-gradient(circle,rgba(26,92,53,.3) 0%,transparent 70%);top:-70px;right:-70px;"></div>
+  <div class="deco" style="width:160px;height:160px;background:radial-gradient(circle,rgba(26,92,53,.2) 0%,transparent 70%);bottom:90px;left:-60px;"></div>
+
+  <div class="top-bar"></div>
+
+  <div class="ph">
+    <div class="ph-tag">G A R T E N A R B E I T E N &nbsp;·&nbsp; K A N T O N &nbsp; Z U G</div>
+    <div class="ph-title" style="font-size:32px">Altin <em>&</em> Jannis</div>
+    <div class="ph-sub">Studentisch geführt &amp; professionell</div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="p1">
+
+    <!-- Portraits -->
+    <div class="portraits">
+      <div class="portrait-col">
+        <div class="portrait-ring"><img src="./images/jannis.png" alt="Jannis"/></div>
+        <div class="p-name">Jannis</div>
+        <div class="p-detail">19 Jahre &nbsp;·&nbsp; SC Cham</div>
+        <div class="p-hobby">Fussball &nbsp;·&nbsp; Natur &nbsp;·&nbsp; Freiluft</div>
+      </div>
+      <div class="portrait-col">
+        <div class="portrait-ring"><img src="./images/altin.png" alt="Altin"/></div>
+        <div class="p-name">Altin</div>
+        <div class="p-detail">20 Jahre &nbsp;·&nbsp; Zug 94</div>
+        <div class="p-hobby">Fussball &nbsp;·&nbsp; Fahrrad &nbsp;·&nbsp; Gym</div>
+      </div>
+    </div>
+
+    <!-- Slim garden image -->
+    <div class="hero-img">
+      <img src="./images/flyer-garten.jpg" alt="Gepflegter Schweizer Garten"/>
+    </div>
+
+    <!-- Intro -->
+    <div class="intro">
+      <p>Wir sind zwei Studenten aus dem Kanton Zug, die mit echter Leidenschaft Gartenarbeiten übernehmen. Kein Grossbetrieb, keine anonymen Teams – nur wir zwei, persönlich und mit vollem Einsatz für Ihren Garten. Sauber, zuverlässig und pünktlich – immer mit Herz.</p>
+    </div>
+
+    <!-- Quote -->
+    <div class="quote">
+      <div class="quote-text">«&nbsp;Ihr Garten. Unsere Leidenschaft.&nbsp;»</div>
+      <div class="quote-by">— Altin Ramadani &amp; Jannis</div>
+    </div>
+
+  </div>
+
+  <!-- Contact strip -->
+  <div class="cs">
+    <div class="cs-col">
+      <div class="cs-label">Telefon Altin</div>
+      <div class="cs-val">+41 76 611 81 50</div>
+    </div>
+    <div class="cs-col">
+      <div class="cs-label">Telefon Jannis</div>
+      <div class="cs-val">+41 78 978 77 75</div>
+    </div>
+    <div class="cs-col">
+      <div class="cs-label">E-Mail</div>
+      <div class="cs-val">tiniolti2006@gmail.com</div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════
+     SEITE 2 — LEISTUNGEN
+══════════════════════════════════════════ -->
+<div class="page">
+  <div class="deco" style="width:200px;height:200px;background:radial-gradient(circle,rgba(26,92,53,.28) 0%,transparent 70%);top:-60px;left:-60px;"></div>
+  <div class="deco" style="width:150px;height:150px;background:radial-gradient(circle,rgba(26,92,53,.18) 0%,transparent 70%);bottom:90px;right:-50px;"></div>
+
+  <div class="top-bar"></div>
+
+  <div class="ph">
+    <div class="ph-tag">W A S &nbsp; W I R &nbsp; A N B I E T E N</div>
+    <div class="ph-title" style="font-size:24px">Unsere Leistungen</div>
+    <div class="ph-sub">Von Rasenpflege bis Handwerk – flexibel &amp; zuverlässig</div>
+  </div>
+  <div class="rule"></div>
+
+  <div class="p2">
+
+    <!-- Services -->
+    <div class="svc-grid">
+      <div class="svc"><div class="svc-dot"></div><div><div class="svc-title">Rasen mähen</div><div class="svc-desc">Präziser Schnitt, wöchentlich oder nach Bedarf</div></div></div>
+      <div class="svc"><div class="svc-dot"></div><div><div class="svc-title">Hecken schneiden</div><div class="svc-desc">Saubere Konturen, gesunde Pflanzen</div></div></div>
+      <div class="svc"><div class="svc-dot"></div><div><div class="svc-title">Unkraut entfernen</div><div class="svc-desc">Vollständig inkl. Wurzel – dauerhaft sauber</div></div></div>
+      <div class="svc"><div class="svc-dot"></div><div><div class="svc-title">Gartenpflege allgemein</div><div class="svc-desc">Schneiden, pflegen, düngen – aus einer Hand</div></div></div>
+      <div class="svc"><div class="svc-dot"></div><div><div class="svc-title">Platten verlegen</div><div class="svc-desc">Wege &amp; Terrassen, fachgerechter Unterbau</div></div></div>
+      <div class="svc"><div class="svc-dot"></div><div><div class="svc-title">Aufräumarbeiten</div><div class="svc-desc">Laub, Schnittgut, Abfall – sauber entsorgt</div></div></div>
+      <div class="svc" style="grid-column:span 2"><div class="svc-dot"></div><div><div class="svc-title">Handwerkliche Arbeiten</div><div class="svc-desc">Kleinere Außenarbeiten – nach individueller Absprache</div></div></div>
+    </div>
+
+    <!-- Slim photo strip -->
+    <div class="photo-strip">
+      <img src="./images/flyer-rasen.jpg"   alt="Rasen mähen"/>
+      <img src="./images/flyer-hecke.jpg"   alt="Hecken schneiden"/>
+      <img src="./images/flyer-platten.jpg" alt="Platten verlegen"/>
+    </div>
+
+    <div class="hrule"></div>
+
+    <!-- Warum wir -->
+    <div class="ww-head">
+      <div class="ww-tag">W A R U M &nbsp; A L T I N &nbsp; &amp; &nbsp; J A N N I S ?</div>
+      <div class="ww-title">Unsere Stärken</div>
+    </div>
+
+    <div class="reasons">
+      <div class="reason">
+        <div class="r-title">Persönlich</div>
+        <div class="r-desc">Direkt mit uns –<br>kein Callcenter, kein Team.</div>
+      </div>
+      <div class="reason">
+        <div class="r-title">Zuverlässig</div>
+        <div class="r-desc">Pünktlich &amp; sauber.<br>Abmachungen gelten.</div>
+      </div>
+      <div class="reason">
+        <div class="r-title">Faire Preise</div>
+        <div class="r-desc">Transparent und<br>erschwinglich.</div>
+      </div>
+    </div>
+
+    <div class="hrule"></div>
+
+    <!-- Contact info (print-friendly, no button) -->
+    <div class="contact-block">
+      <div class="cb-title">So erreichen Sie uns</div>
+      <div class="cb-grid">
+        <div class="cb-item">
+          <div class="cb-label">Telefon Altin</div>
+          <div class="cb-val">+41 76 611 81 50</div>
+        </div>
+        <div class="cb-item">
+          <div class="cb-label">Telefon Jannis</div>
+          <div class="cb-val">+41 78 978 77 75</div>
+        </div>
+        <div class="cb-item">
+          <div class="cb-label">E-Mail</div>
+          <div class="cb-val">tiniolti2006<br>@gmail.com</div>
+        </div>
+        <div class="cb-item" style="margin-top:8px">
+          <div class="cb-label">Einsatzgebiet</div>
+          <div class="cb-val">Kanton Zug,<br>Schweiz</div>
+        </div>
+        <div class="cb-item" style="margin-top:8px">
+          <div class="cb-label">Verfügbarkeit</div>
+          <div class="cb-val">Wochenende &amp;<br>Wochentage</div>
+        </div>
+        <div class="cb-item" style="margin-top:8px">
+          <div class="cb-label">Offerte</div>
+          <div class="cb-val">Kostenlos &amp;<br>unverbindlich</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Contact strip -->
+  <div class="cs">
+    <div class="cs-col">
+      <div class="cs-label">Telefon Altin</div>
+      <div class="cs-val">+41 76 611 81 50</div>
+    </div>
+    <div class="cs-col">
+      <div class="cs-label">Telefon Jannis</div>
+      <div class="cs-val">+41 78 978 77 75</div>
+    </div>
+    <div class="cs-col">
+      <div class="cs-label">E-Mail</div>
+      <div class="cs-val">tiniolti2006@gmail.com</div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
