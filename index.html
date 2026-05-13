@@ -1233,26 +1233,26 @@
 
       <div class="form-box" data-r data-d="2">
         <h3>Anfrage stellen</h3>
-        <form onsubmit="fs(event)" novalidate>
+        <form id="kontakt-form" onsubmit="fs(event)" novalidate>
           <div class="f-row">
             <div class="f-group">
               <label for="fn">Name</label>
-              <input type="text" id="fn" placeholder="Ihr Name" required/>
+              <input type="text" id="fn" name="name" placeholder="Ihr Name" required/>
             </div>
             <div class="f-group">
               <label for="ft">Telefon</label>
-              <input type="tel" id="ft" placeholder="+41 XX XXX XX XX"/>
+              <input type="tel" id="ft" name="telefon" placeholder="+41 XX XXX XX XX"/>
             </div>
           </div>
           <div class="f-group">
             <label for="fe">E-Mail</label>
-            <input type="email" id="fe" placeholder="ihre@email.ch" required/>
+            <input type="email" id="fe" name="email" placeholder="ihre@email.ch" required/>
           </div>
           <div class="f-group">
             <label for="fm">Nachricht</label>
-            <textarea id="fm" placeholder="Was kann ich für Ihren Garten tun?"></textarea>
+            <textarea id="fm" name="nachricht" placeholder="Was kann ich für Ihren Garten tun?"></textarea>
           </div>
-          <button type="submit" class="btn-submit">
+          <button type="submit" class="btn-submit" id="kontakt-btn">
             <span class="material-symbols-rounded" style="font-size:20px">send</span>
             Anfrage senden
           </button>
@@ -1447,14 +1447,50 @@
     });
   })();
 
-  // ── Formular ──
+  // ── Formular (Formsubmit.co) ──
   function fs(e) {
     e.preventDefault();
-    const b = e.target.querySelector('.btn-submit');
-    const o = b.innerHTML;
-    b.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px">check_circle</span> Gesendet!';
-    b.style.background = 'var(--c-mint)';
-    setTimeout(() => { b.innerHTML = o; b.style.background = ''; e.target.reset(); }, 3000);
+    const form = e.target;
+    const btn  = document.getElementById('kontakt-btn');
+    const orig = btn.innerHTML;
+
+    // Validation
+    const name  = form.querySelector('#fn').value.trim();
+    const email = form.querySelector('#fe').value.trim();
+    if (!name || !email) return;
+
+    btn.disabled = true;
+    btn.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px">hourglass_top</span> Wird gesendet…';
+
+    fetch('https://formsubmit.co/ajax/tiniolti2006@gmail.com', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({
+        name:     name,
+        email:    email,
+        telefon:  form.querySelector('#ft').value.trim(),
+        nachricht: form.querySelector('#fm').value.trim(),
+        _subject: 'Neue Gartenanfrage – Altin & Jannis',
+        _replyto: email,
+        _captcha: 'false'
+      })
+    })
+    .then(r => r.json())
+    .then(data => {
+      if (data.success === 'true' || data.success === true) {
+        btn.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px">check_circle</span> Gesendet!';
+        btn.style.background = 'var(--c-mint)';
+        form.reset();
+        setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 4000);
+      } else {
+        throw new Error('failed');
+      }
+    })
+    .catch(() => {
+      btn.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px">error</span> Fehler – bitte direkt anrufen';
+      btn.style.background = '#c0392b';
+      setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 4000);
+    });
   }
 </script>
 </body>
