@@ -1,0 +1,1370 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Altin & Jannis – Gartenarbeiten mit Herz, Sorgfalt und Einsatz. Zwei Studenten, die Ihren Garten in besten Händen lassen."/>
+  <title>Altin & Jannis – Gartenarbeiten</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+
+  <style>
+    :root {
+      --c-deep:    #071c10;
+      --c-forest:  #0f3d21;
+      --c-pine:    #1a5c35;
+      --c-vivid:   #26804d;
+      --c-leaf:    #4caf77;
+      --c-mint:    #9edbb9;
+      --c-mist:    #e8f5ee;
+      --c-white:   #ffffff;
+      --c-paper:   #f6faf7;
+      --c-ink:     #0d1a13;
+      --c-ink-mid: #374a3e;
+      --c-ink-low: #657a6d;
+      --t: 0.35s cubic-bezier(0.4,0,0.2,1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    ::-webkit-scrollbar { display: none; }
+    * { scrollbar-width: none; }
+    html { font-size: 16px; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--c-paper); color: var(--c-ink); }
+    ::selection { background: var(--c-leaf); color: var(--c-deep); }
+    img { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+    .wrap { width: 100%; max-width: 1280px; margin: 0 auto; padding: 0 48px; }
+    @media(max-width:768px){ .wrap { padding: 0 20px; } }
+
+    /* Reveal — Elemente kommen von unten */
+    [data-r] { opacity:0; transform:translateY(36px); transition: opacity .7s var(--t), transform .7s var(--t); }
+    [data-r].on { opacity:1; transform:none; }
+    [data-r][data-d="1"]{ transition-delay:.1s }
+    [data-r][data-d="2"]{ transition-delay:.2s }
+    [data-r][data-d="3"]{ transition-delay:.3s }
+    [data-r][data-d="4"]{ transition-delay:.4s }
+    [data-r][data-d="5"]{ transition-delay:.5s }
+    [data-r][data-d="6"]{ transition-delay:.6s }
+
+    /* ── NAV ── */
+    #nav {
+      position: fixed; inset: 0 0 auto 0; z-index: 100;
+      padding: 28px 0;
+      transition: background var(--t), box-shadow var(--t), padding var(--t);
+    }
+    #nav.stuck {
+      background: rgba(7,28,16,.92);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 1px 0 rgba(76,175,119,.15);
+      padding: 16px 0;
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; }
+    .nav-logo { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.25rem; color:var(--c-white); text-decoration:none; letter-spacing:-.02em; }
+    .nav-logo span { color:var(--c-leaf); }
+    .nav-links { display:flex; align-items:center; gap:36px; list-style:none; }
+    .nav-links a { color:rgba(255,255,255,.7); text-decoration:none; font-size:.875rem; font-weight:600; transition:color var(--t); }
+    .nav-links a:hover { color:var(--c-white); }
+    .nav-cta {
+      background:var(--c-leaf); color:var(--c-deep) !important; padding:10px 24px;
+      border-radius:9999px; font-weight:700 !important;
+      transition: background var(--t), transform var(--t), box-shadow var(--t) !important;
+    }
+    .nav-cta:hover { background:var(--c-mint) !important; transform:translateY(-1px); box-shadow:0 6px 20px rgba(76,175,119,.35) !important; }
+    .nav-burger { display:none; background:none; border:none; cursor:pointer; color:white; }
+    @media(max-width:900px){ .nav-links{ display:none; } .nav-burger{ display:block; } }
+
+    /* Mobile menu */
+    #mmenu {
+      display:none; position:fixed; inset:0; background:var(--c-deep); z-index:200;
+      flex-direction:column; align-items:center; justify-content:center; gap:48px;
+    }
+    #mmenu.open { display:flex; }
+    #mmenu a { font-family:'Montserrat',sans-serif; font-weight:800; font-size:2.25rem; color:var(--c-white); text-decoration:none; transition:color var(--t); }
+    #mmenu a:hover { color:var(--c-leaf); }
+    .mmenu-x { position:absolute; top:24px; right:24px; background:none; border:none; color:rgba(255,255,255,.5); cursor:pointer; }
+
+    /* ── HERO ── */
+    #hero { position:relative; height:100vh; min-height:700px; display:flex; align-items:flex-end; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; }
+    .hero-bg img { animation:hzoom 14s ease-out forwards; }
+    @keyframes hzoom { from{transform:scale(1.06)} to{transform:scale(1.0)} }
+    .hero-grad {
+      position:absolute; inset:0;
+      background: linear-gradient(165deg, rgba(7,28,16,.15) 0%, rgba(7,28,16,.55) 50%, rgba(7,28,16,.93) 100%);
+    }
+    .hero-body { position:relative; z-index:2; padding-bottom:100px; width:100%; }
+
+    .hero-badge {
+      display:inline-flex; align-items:center; gap:8px;
+      background:rgba(76,175,119,.15); border:1px solid rgba(76,175,119,.4);
+      border-radius:9999px; padding:6px 18px;
+      color:var(--c-mint); font-size:.8125rem; font-weight:600; letter-spacing:.06em;
+      margin-bottom:28px; backdrop-filter:blur(8px);
+    }
+    .hero-badge::before {
+      content:''; width:7px; height:7px; background:var(--c-leaf); border-radius:50%;
+      animation:pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.5)} }
+
+    .hero-hl {
+      font-family:'Montserrat',sans-serif; font-weight:900;
+      font-size:clamp(3rem,6.5vw,5.75rem);
+      line-height:1.0; letter-spacing:-.03em; color:var(--c-white);
+      margin-bottom:28px; max-width:920px;
+    }
+    .hero-hl .accent { color:var(--c-leaf); font-style:italic; }
+
+    .hero-sub { color:rgba(255,255,255,.72); font-size:1.0625rem; line-height:1.75; max-width:540px; margin-bottom:44px; }
+
+    .hero-actions { display:flex; align-items:center; gap:20px; flex-wrap:wrap; }
+
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:10px;
+      background:var(--c-leaf); color:var(--c-deep);
+      font-family:'Montserrat',sans-serif; font-weight:700; font-size:.9375rem;
+      padding:15px 36px; border-radius:9999px; text-decoration:none; border:none; cursor:pointer;
+      transition: background var(--t), transform var(--t), box-shadow var(--t);
+    }
+    .btn-primary:hover { background:var(--c-mint); transform:translateY(-2px); box-shadow:0 12px 32px rgba(76,175,119,.4); }
+
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:10px;
+      background:transparent; color:rgba(255,255,255,.82);
+      font-family:'Open Sans',sans-serif; font-weight:600; font-size:.9rem;
+      padding:15px 32px; border-radius:9999px; text-decoration:none;
+      border:1.5px solid rgba(255,255,255,.28);
+      transition: all var(--t);
+    }
+    .btn-ghost:hover { background:rgba(255,255,255,.1); border-color:rgba(255,255,255,.6); color:var(--c-white); }
+
+    .hero-scroll { position:absolute; bottom:36px; left:50%; transform:translateX(-50%); z-index:2; }
+    .hero-scroll span {
+      display:block; width:1px; height:52px;
+      background:linear-gradient(to bottom, rgba(255,255,255,.5), transparent);
+      animation:sline 2.2s ease-in-out infinite;
+    }
+    @keyframes sline { 0%{transform:scaleY(0);transform-origin:top;opacity:1} 50%{transform:scaleY(1);opacity:1} 100%{transform:scaleY(1);transform-origin:bottom;opacity:0} }
+
+    /* ── VIDEO SECTION ── */
+    #video-section {
+      background: var(--c-deep);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      padding: 100px 56px 72px;
+      min-height: 80vh;
+    }
+    #video-section > * { min-width: 0; }
+    .video-scrub-card {
+      position: relative; border-radius: 20px; overflow: hidden;
+      box-shadow: 0 20px 56px rgba(0,0,0,.5); min-height: 480px;
+    }
+
+    /* ── STATS ── */
+    #stats { background:var(--c-deep); padding:40px 0; border-top:1px solid rgba(76,175,119,.12); }
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); }
+    @media(max-width:640px){ .stats-grid{ grid-template-columns:repeat(2,1fr); gap:28px; } }
+    .stat-item { display:flex; flex-direction:column; align-items:center; gap:4px; padding:0 28px; border-right:1px solid rgba(255,255,255,.07); text-align:center; }
+    .stat-item:last-child { border-right:none; }
+    .stat-num { font-family:'Montserrat',sans-serif; font-weight:900; font-size:2.125rem; color:var(--c-leaf); letter-spacing:-.02em; }
+    .stat-lbl { color:rgba(255,255,255,.45); font-size:.75rem; font-weight:600; letter-spacing:.07em; text-transform:uppercase; }
+
+    /* ── ÜBER UNS ── */
+    #ueber-uns { padding:64px 0; background:var(--c-white); overflow:hidden; }
+    .uu-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    @media(max-width:900px){ .uu-grid{ grid-template-columns:1fr; gap:56px; } }
+
+    /* Image side */
+    .uu-img-wrap { position:relative; }
+    .uu-img-deco {
+      position:absolute; top:-32px; left:-32px; width:160px; height:160px;
+      border:3px solid var(--c-mist); border-radius:20px; z-index:0;
+    }
+    .uu-img-frame { position:relative; border-radius:24px; overflow:hidden; aspect-ratio:4/3; box-shadow:0 20px 60px rgba(15,61,33,.18); }
+    .uu-img-frame img { transition:transform .8s ease; }
+    .uu-img-frame:hover img { transform:scale(1.03); }
+    .uu-badge {
+      position:absolute; bottom:-20px; right:-20px;
+      background:var(--c-forest); color:var(--c-white);
+      border-radius:16px; padding:20px 24px;
+      box-shadow:0 12px 36px rgba(15,61,33,.3); text-align:center; z-index:2;
+    }
+    .uu-badge .bn { font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.875rem; color:var(--c-leaf); }
+    .uu-badge .bt { font-size:.75rem; color:rgba(255,255,255,.65); line-height:1.4; }
+
+    /* Text side */
+    .sec-tag { display:inline-flex; align-items:center; gap:8px; color:var(--c-vivid); font-size:.8125rem; font-weight:700; letter-spacing:.1em; text-transform:uppercase; margin-bottom:16px; }
+    .sec-tag::before { content:''; width:24px; height:2px; background:var(--c-leaf); }
+    .sec-h2 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:clamp(2rem,3.5vw,3rem); letter-spacing:-.025em; color:var(--c-ink); margin-bottom:24px; line-height:1.1; }
+    .sec-h2 em { color:var(--c-vivid); font-style:normal; }
+    .uu-text { color:var(--c-ink-mid); font-size:1.0625rem; line-height:1.85; margin-bottom:40px; }
+
+    .chips { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+    .chip {
+      display:flex; align-items:center; gap:12px;
+      background:var(--c-paper); border-radius:12px; padding:14px 18px;
+      box-shadow:0 4px 16px rgba(15,61,33,.06);
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .chip:hover { transform:translateY(-2px); box-shadow:0 10px 28px rgba(15,61,33,.13); }
+    .chip-icon {
+      width:36px; height:36px; background:var(--c-mist); border-radius:8px;
+      display:flex; align-items:center; justify-content:center; color:var(--c-vivid); font-size:18px; flex-shrink:0;
+    }
+    .chip span { font-size:.875rem; font-weight:600; color:var(--c-ink-mid); }
+
+    /* ── LEISTUNGEN ── */
+    #leistungen { padding:120px 0; background:var(--c-paper); }
+    .sec-center { text-align:center; margin-bottom:72px; }
+    .sec-title-c { font-family:'Montserrat',sans-serif; font-weight:800; font-size:clamp(2rem,3.5vw,3.25rem); letter-spacing:-.025em; color:var(--c-ink); margin-bottom:14px; }
+    .sec-sub-c { color:var(--c-ink-low); font-size:1.0625rem; max-width:540px; margin:0 auto; line-height:1.7; }
+
+    .bento { display:grid; grid-template-columns:repeat(12,1fr); grid-auto-rows:310px; gap:20px; }
+    @media(max-width:900px){ .bento{ grid-template-columns:1fr 1fr; grid-auto-rows:260px; } }
+    @media(max-width:540px){ .bento{ grid-template-columns:1fr; } }
+
+    .bc { position:relative; border-radius:20px; overflow:hidden; cursor:pointer; }
+    .bc-img { position:absolute; inset:0; transition:transform .6s ease; }
+    .bc:hover .bc-img { transform:scale(1.06); }
+    .bc-ov {
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, transparent 30%, rgba(7,28,16,.72) 72%, rgba(7,28,16,.96) 100%);
+      transition:background var(--t);
+    }
+    .bc:hover .bc-ov { background:linear-gradient(180deg, rgba(7,28,16,.08) 0%, rgba(7,28,16,.82) 65%, rgba(7,28,16,.98) 100%); }
+    .bc-content { position:absolute; bottom:0; left:0; right:0; padding:24px 28px; z-index:2; }
+    .bc-icon {
+      width:44px; height:44px; background:rgba(76,175,119,.18); border:1px solid rgba(76,175,119,.3);
+      border-radius:10px; display:flex; align-items:center; justify-content:center;
+      color:var(--c-leaf); font-size:22px; margin-bottom:10px;
+      transition: background var(--t), border-color var(--t), color var(--t);
+    }
+    .bc:hover .bc-icon { background:var(--c-leaf); border-color:var(--c-leaf); color:var(--c-deep); }
+    .bc-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.1875rem; color:var(--c-white); margin-bottom:4px; }
+    .bc-desc { color:rgba(255,255,255,.6); font-size:.8125rem; line-height:1.55; max-height:0; overflow:hidden; opacity:0; transition:max-height .4s ease,opacity .3s ease; }
+    .bc:hover .bc-desc { max-height:72px; opacity:1; }
+
+    .b7{ grid-column:span 7; }
+    .b5{ grid-column:span 5; }
+    .b4{ grid-column:span 4; }
+    @media(max-width:900px){ .b7,.b5,.b4{ grid-column:span 1; } }
+
+    .bc-solo {
+      grid-column:span 12; background:linear-gradient(100deg, var(--c-deep), var(--c-forest));
+      border-radius:20px; padding:48px 56px;
+      display:flex; align-items:center; justify-content:space-between; gap:32px;
+      position:relative; overflow:hidden;
+    }
+    @media(max-width:768px){ .bc-solo{ flex-direction:column; padding:36px 24px; } }
+    .bc-solo::after {
+      content:''; position:absolute; top:-60px; right:-60px;
+      width:260px; height:260px;
+      border:56px solid rgba(76,175,119,.07); transform:rotate(20deg); pointer-events:none;
+    }
+    .bc-solo-h { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.75rem; color:var(--c-white); margin-bottom:12px; letter-spacing:-.02em; }
+    .bc-solo-p { color:rgba(255,255,255,.5); max-width:480px; line-height:1.75; font-size:.9375rem; }
+
+    /* ── WARUM WIR ── */
+    #warum-wir { padding:120px 0; background:var(--c-deep); position:relative; overflow:hidden; }
+    .ww-deco1 { position:absolute; top:-200px; right:-200px; width:700px; height:700px; background:radial-gradient(circle,rgba(76,175,119,.08) 0%,transparent 70%); pointer-events:none; }
+    .ww-deco2 { position:absolute; bottom:-150px; left:-150px; width:500px; height:500px; background:radial-gradient(circle,rgba(76,175,119,.06) 0%,transparent 70%); pointer-events:none; }
+    #warum-wir .sec-tag { color:var(--c-leaf); }
+    #warum-wir .sec-tag::before { background:var(--c-leaf); }
+    #warum-wir .sec-title-c { color:var(--c-white); }
+    #warum-wir .sec-sub-c { color:rgba(255,255,255,.45); }
+    .ww-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    @media(max-width:900px){ .ww-grid{ grid-template-columns:repeat(2,1fr); } }
+    @media(max-width:540px){ .ww-grid{ grid-template-columns:1fr; } }
+    .ww-card {
+      background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:20px; padding:36px 28px;
+      transition: background var(--t), border-color var(--t), transform var(--t);
+    }
+    .ww-card:hover { background:rgba(76,175,119,.07); border-color:rgba(76,175,119,.25); transform:translateY(-4px); }
+    .ww-icon {
+      width:56px; height:56px; background:rgba(76,175,119,.1); border-radius:14px;
+      display:flex; align-items:center; justify-content:center; color:var(--c-leaf); font-size:26px; margin-bottom:20px;
+      transition:background var(--t);
+    }
+    .ww-card:hover .ww-icon { background:rgba(76,175,119,.2); }
+    .ww-card h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.0625rem; color:var(--c-white); margin-bottom:10px; }
+    .ww-card p { color:rgba(255,255,255,.5); font-size:.9rem; line-height:1.7; }
+
+    /* ── ARBEITSWEISE ── */
+    #arbeitsweise { padding:120px 0; background:var(--c-paper); }
+    .aw-line {
+      position:absolute; top:40px; left:calc(10% + 22px); right:calc(10% + 22px); height:2px;
+      background:linear-gradient(to right, var(--c-leaf), var(--c-mint), var(--c-leaf));
+    }
+    @media(max-width:900px){ .aw-line{ display:none; } }
+    .aw-wrap { position:relative; margin-top:64px; }
+    .aw-steps { display:grid; grid-template-columns:repeat(5,1fr); gap:24px; position:relative; z-index:1; }
+    @media(max-width:900px){ .aw-steps{ grid-template-columns:1fr; max-width:480px; margin:0 auto; } }
+    .aw-step { display:flex; flex-direction:column; align-items:center; text-align:center; }
+    .aw-num {
+      width:80px; height:80px; background:var(--c-white); border:2px solid var(--c-leaf); border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Montserrat',sans-serif; font-weight:900; font-size:1.5rem; color:var(--c-vivid);
+      margin-bottom:24px; box-shadow:0 4px 20px rgba(15,61,33,.08);
+      position:relative; z-index:1; transition: background var(--t), color var(--t), border-color var(--t), box-shadow var(--t);
+    }
+    .aw-step:hover .aw-num { background:var(--c-forest); color:var(--c-leaf); border-color:var(--c-forest); box-shadow:0 8px 28px rgba(26,92,53,.3); }
+    .aw-title { font-family:'Montserrat',sans-serif; font-weight:700; font-size:.9375rem; color:var(--c-ink); margin-bottom:8px; }
+    .aw-desc { color:var(--c-ink-low); font-size:.8125rem; line-height:1.65; }
+
+    /* ── KONTAKT ── */
+    #kontakt { padding:120px 0; background:var(--c-white); }
+    .ko-grid { display:grid; grid-template-columns:1fr 1.4fr; gap:80px; align-items:start; }
+    @media(max-width:900px){ .ko-grid{ grid-template-columns:1fr; gap:56px; } }
+
+    .ko-h2 { font-family:'Montserrat',sans-serif; font-weight:800; font-size:clamp(1.875rem,3vw,2.75rem); letter-spacing:-.025em; color:var(--c-ink); margin-bottom:20px; line-height:1.1; }
+    .ko-p { color:var(--c-ink-mid); line-height:1.8; margin-bottom:48px; }
+    .ko-det { display:flex; align-items:flex-start; gap:16px; margin-bottom:24px; }
+    .ko-det-icon {
+      width:48px; height:48px; background:var(--c-mist); border-radius:12px;
+      display:flex; align-items:center; justify-content:center; color:var(--c-vivid); font-size:22px; flex-shrink:0;
+    }
+    .ko-det-lbl { font-size:.7rem; font-weight:700; color:var(--c-ink-low); letter-spacing:.09em; text-transform:uppercase; margin-bottom:2px; }
+    .ko-det-val { font-weight:600; color:var(--c-ink); font-size:.9375rem; }
+
+    /* Form */
+    .form-box {
+      background:var(--c-forest); border-radius:24px; padding:48px;
+      position:relative; overflow:hidden;
+    }
+    @media(max-width:540px){ .form-box{ padding:28px 24px; } }
+    .form-box::before {
+      content:''; position:absolute; top:-80px; right:-80px; width:300px; height:300px;
+      background:radial-gradient(circle,rgba(76,175,119,.15),transparent 70%); pointer-events:none;
+    }
+    .form-box h3 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:1.375rem; color:var(--c-white); margin-bottom:32px; }
+    .f-row { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    @media(max-width:600px){ .f-row{ grid-template-columns:1fr; } }
+    .f-group { display:flex; flex-direction:column; gap:8px; margin-bottom:20px; }
+    .f-group label { font-size:.8125rem; font-weight:600; color:rgba(255,255,255,.6); letter-spacing:.04em; }
+    .f-group input, .f-group textarea {
+      background:rgba(255,255,255,.07); border:1.5px solid rgba(255,255,255,.12); border-radius:12px;
+      padding:13px 18px; color:var(--c-white);
+      font-family:'Open Sans',sans-serif; font-size:.9375rem; outline:none; resize:none;
+      transition: border-color var(--t), background var(--t);
+    }
+    .f-group input::placeholder, .f-group textarea::placeholder { color:rgba(255,255,255,.3); }
+    .f-group input:focus, .f-group textarea:focus { border-color:var(--c-leaf); background:rgba(255,255,255,.1); }
+    .f-group textarea { height:120px; }
+    .btn-submit {
+      width:100%; background:var(--c-leaf); color:var(--c-deep);
+      font-family:'Montserrat',sans-serif; font-weight:700; font-size:.9375rem;
+      padding:16px 32px; border-radius:9999px; border:none; cursor:pointer;
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      transition: background var(--t), transform var(--t), box-shadow var(--t);
+    }
+    .btn-submit:hover { background:var(--c-mint); transform:translateY(-2px); box-shadow:0 10px 30px rgba(76,175,119,.4); }
+
+    /* ── FOOTER ── */
+    footer { background:var(--c-deep); padding:72px 0 36px; }
+    .ft-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:64px; padding-bottom:48px; border-bottom:1px solid rgba(255,255,255,.06); margin-bottom:32px; }
+    @media(max-width:900px){ .ft-grid{ grid-template-columns:1fr; gap:40px; } }
+    .ft-logo { font-family:'Montserrat',sans-serif; font-weight:800; font-size:1.25rem; color:var(--c-white); margin-bottom:16px; }
+    .ft-logo span { color:var(--c-leaf); }
+    .ft-p { color:rgba(255,255,255,.4); font-size:.875rem; line-height:1.8; max-width:300px; margin-bottom:24px; }
+    .ft-tagline { font-style:italic; font-size:.875rem; color:var(--c-leaf); }
+    .ft-col h4 { font-family:'Montserrat',sans-serif; font-weight:700; font-size:.8125rem; letter-spacing:.1em; text-transform:uppercase; color:var(--c-white); margin-bottom:20px; }
+    .ft-col nav { display:flex; flex-direction:column; gap:12px; }
+    .ft-col nav a { color:rgba(255,255,255,.4); text-decoration:none; font-size:.875rem; transition:color var(--t); }
+    .ft-col nav a:hover { color:var(--c-leaf); }
+    .ft-bottom { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px; }
+    .ft-bottom p { color:rgba(255,255,255,.25); font-size:.75rem; }
+    .ft-bottom span { color:rgba(76,175,119,.6); }
+
+    /* Video-Inhalt */
+    #scrub-video { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .video-progress-wrap {
+      position: absolute; bottom: 16px; left: 16px; right: 16px; z-index: 2;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .video-progress-bar-bg { width:100%; height:2px; background:rgba(255,255,255,.2); border-radius:9999px; overflow:hidden; }
+    .video-progress-fill   { height:100%; width:0%; background:var(--c-leaf); border-radius:9999px; transition:width .05s linear; }
+    .video-progress-label  { font-size:.65rem; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.3); }
+    .video-caption-col { display:flex; flex-direction:column; justify-content:center; }
+    .video-caption-title {
+      font-family:'Montserrat',sans-serif; font-weight:800;
+      font-size: clamp(1.75rem,3vw,3rem); color:var(--c-white);
+      letter-spacing:-.03em; line-height:1.1;
+    }
+    .video-caption-sub { font-size:.9375rem; color:rgba(255,255,255,.4); margin-top:14px; line-height:1.6; }
+
+    /* Arbeitsweise – Dot-Hintergrund + CTA */
+    #arbeitsweise { position: relative; }
+    #arbeitsweise::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 1px 1px, rgba(15,61,33,.12) 1px, transparent 0);
+      background-size: 36px 36px;
+      pointer-events: none;
+    }
+    .aw-cta {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 56px;
+      padding-top: 32px;
+      border-top: 1px solid rgba(15,61,33,.14);
+    }
+    .aw-cta-note { color: var(--c-ink-low); font-size: .875rem; line-height: 1.5; }
+
+    /* Video-Section rechte Spalte */
+    .video-caption-col  { display:flex; flex-direction:column; gap:28px; }
+    .video-caption-text { display:flex; flex-direction:column; justify-content:center; }
+    .video-side-img {
+      flex: 1; min-height: 220px; border-radius: 20px; overflow: hidden; position: relative;
+      box-shadow: 0 16px 48px rgba(0,0,0,.45);
+    }
+    .video-side-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .video-side-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(7,28,16,.72) 0%, transparent 55%);
+      display: flex; align-items: flex-end; padding: 20px;
+    }
+    .video-side-label {
+      display: flex; align-items: center; gap: 8px;
+      color: var(--c-white); font-size: .8125rem; font-weight: 600;
+      letter-spacing: .04em;
+    }
+
+    /* Über uns – Portrait-Duo */
+    .uu-portraits {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      position: relative;
+    }
+    .uu-portrait-card {
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(15,61,33,.14);
+      background: var(--c-white);
+      transition: transform var(--t), box-shadow var(--t);
+    }
+    .uu-portrait-card:hover { transform: translateY(-4px); box-shadow: 0 24px 56px rgba(15,61,33,.2); }
+    .uu-portrait-img {
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      background: #eef2ef;
+    }
+    .uu-portrait-img img {
+      width: 100%; height: 100%; object-fit: contain; object-position: center bottom;
+      transition: transform .7s ease;
+      background: #f0f4f1;
+    }
+    .uu-portrait-card:hover .uu-portrait-img img { transform: scale(1.04); }
+    .uu-portrait-meta { padding: 14px 16px 18px; }
+    .uu-portrait-name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800; font-size: 1.0625rem; color: var(--c-ink); margin-bottom: 3px;
+    }
+    .uu-portrait-role { font-size: .775rem; color: var(--c-vivid); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-bottom: 14px; }
+    .uu-cv { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0; }
+    .uu-cv li {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 9px 0;
+      border-bottom: 1px solid rgba(15,61,33,.08);
+    }
+    .uu-cv li:last-child { border-bottom: none; }
+    .uu-cv-icon {
+      width: 28px; height: 28px; border-radius: 8px;
+      background: rgba(15,61,33,.07);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: 1px;
+    }
+    .uu-cv-icon .material-symbols-rounded { font-size: 15px; color: var(--c-vivid); }
+    .uu-cv-content { display: flex; flex-direction: column; gap: 1px; }
+    .uu-cv-label { font-size: .68rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--c-ink-low); }
+    .uu-cv-content span:last-child { font-size: .8125rem; color: var(--c-ink); font-weight: 500; line-height: 1.4; }
+    .uu-cv-club { display: flex; align-items: center; gap: 6px; }
+    .uu-cv-club img { width: 20px; height: 20px; object-fit: contain; }
+
+    /* ── MOBILE ── */
+    @media(max-width:768px) {
+
+      /* Hero */
+      #hero { min-height: 520px; }
+      .hero-body { padding-bottom: 60px; }
+      .hero-badge { font-size: .72rem; padding: 5px 13px; margin-bottom: 18px; }
+      .hero-hl { font-size: 2rem; line-height: 1.08; margin-bottom: 18px; }
+      .hero-sub { font-size: .875rem; margin-bottom: 24px; }
+
+      /* Nav */
+      #nav { padding: 14px 0; }
+
+      /* Video section — single column */
+      #video-section {
+        grid-template-columns: 1fr;
+        padding: 40px 20px 32px;
+        min-height: unset;
+        gap: 16px;
+      }
+      .video-scrub-card { min-height: 220px; }
+      .video-side-img { min-height: 160px; flex: unset; }
+      .video-caption-title { font-size: 1.25rem; }
+
+      /* Bento — full width cards */
+      .bento { grid-template-columns: 1fr !important; grid-auto-rows: 220px; gap: 12px; }
+      .b7,.b5,.b4 { grid-column: span 1 !important; }
+      .bc-solo { grid-column: span 1 !important; grid-row: span 1; height: auto; min-height: unset; padding: 28px 20px; flex-direction: column; align-items: flex-start; gap: 20px; }
+      .bc-solo-btn { width: 100%; text-align: center; justify-content: center; }
+
+      /* Arbeitsweise CTA */
+      .aw-cta { flex-direction: column; align-items: flex-start; gap: 16px; margin-top: 36px; }
+
+      /* Portrait cards */
+      .uu-portraits { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .uu-portrait-meta { padding: 10px 10px 12px; }
+      .uu-portrait-name { font-size: .875rem; }
+      .uu-portrait-role { font-size: .62rem; margin-bottom: 8px; }
+      .uu-cv li { padding: 5px 0; gap: 7px; }
+      .uu-cv-icon { width: 22px; height: 22px; border-radius: 6px; }
+      .uu-cv-icon .material-symbols-rounded { font-size: 12px; }
+      .uu-cv-label { font-size: .58rem; }
+      .uu-cv-content span:last-child { font-size: .7rem; }
+      .uu-cv-club img { width: 14px; height: 14px; }
+
+      /* Referenzen */
+      .vn-slide { padding: 0 16px; }
+      .vn-tabs { gap: 6px; margin-bottom: 28px; }
+      .vn-tab { font-size: .68rem; padding: 7px 14px; }
+      .vn-comp { aspect-ratio: 4/3; border-radius: 14px; }
+      .vn-nav { margin-top: 24px; }
+
+      /* Section paddings reduzieren */
+      #ueber-uns { padding: 40px 0; }
+      #leistungen { padding: 48px 0; }
+      #warum-wir { padding: 48px 0; }
+      #arbeitsweise { padding: 48px 0; }
+      #kontakt { padding: 48px 0 40px; }
+      #referenzen { padding: 48px 0 40px; }
+      .vn-header { margin-bottom: 28px; }
+
+      /* Formular kompakter */
+      .form-box { padding: 24px 18px !important; }
+      .form-box h3 { font-size: 1.125rem; margin-bottom: 18px; }
+      .f-group { gap: 5px; margin-bottom: 12px; }
+      .f-group label { font-size: .75rem; }
+      .f-group input, .f-group textarea { padding: 10px 14px; font-size: .875rem; }
+      .f-group textarea { height: 88px; }
+    }
+
+    @media(max-width:480px) {
+      .uu-portraits { grid-template-columns: 1fr; }
+      .uu-portrait-img { aspect-ratio: 4/3; }
+    }
+  /* ── Referenzen Carousel + Comparison ── */
+  #referenzen { background: #0b1e12; padding: 100px 0 64px; overflow: hidden; }
+  #referenzen .sec-h2 { color: #fff; }
+  #referenzen .sec-sub { color: rgba(255,255,255,.55); }
+  #referenzen .sec-tag { color: var(--c-leaf); border-color: rgba(76,175,119,.3); background: rgba(76,175,119,.08); }
+  .vn-header { text-align: center; margin-bottom: 52px; }
+
+  /* Category tabs */
+  .vn-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 48px; flex-wrap: wrap; padding: 0 20px; }
+  .vn-tab {
+    padding: 9px 22px; border-radius: 999px;
+    font-family: 'Montserrat', sans-serif; font-size: .75rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase;
+    background: rgba(255,255,255,.06); border: 1.5px solid rgba(255,255,255,.1);
+    color: rgba(255,255,255,.4); cursor: pointer; transition: all .22s;
+  }
+  .vn-tab.active { background: var(--c-leaf); color: #0b1e12; border-color: var(--c-leaf); }
+  .vn-tab:hover:not(.active) { background: rgba(76,175,119,.15); color: rgba(255,255,255,.88); border-color: rgba(76,175,119,.4); }
+
+  /* Carousel */
+  .vn-carousel { overflow: hidden; }
+  .vn-track { display: flex; will-change: transform; transition: transform .55s cubic-bezier(.4,0,.2,1); }
+  .vn-slide { min-width: 100%; box-sizing: border-box; padding: 0 40px; }
+
+  /* Category label per slide */
+  .vn-cat {
+    max-width: 960px; margin: 0 auto 18px;
+    font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: .8125rem;
+    letter-spacing: .12em; text-transform: uppercase; color: var(--c-leaf);
+    display: flex; align-items: center; gap: 12px;
+  }
+  .vn-cat::before { content:''; display:inline-block; width:22px; height:2px; background:var(--c-leaf); flex-shrink:0; }
+
+  /* Comparison card */
+  .vn-comp {
+    position: relative; max-width: 960px; margin: 0 auto;
+    aspect-ratio: 16/9; border-radius: 20px; overflow: hidden;
+    cursor: col-resize; user-select: none; -webkit-user-select: none;
+    box-shadow: 0 40px 100px rgba(0,0,0,.65);
+  }
+  .vn-comp img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+  .vn-comp .vn-after  { z-index: 1; }
+  .vn-comp .vn-before { z-index: 2; clip-path: inset(0 50% 0 0); }
+
+  /* Divider */
+  .vn-div {
+    position: absolute; top: 0; bottom: 0; left: 50%; z-index: 3;
+    width: 2px; background: rgba(255,255,255,.9); transform: translateX(-50%);
+    pointer-events: none; filter: drop-shadow(0 0 8px rgba(0,0,0,.5));
+  }
+  .vn-div-handle {
+    position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+    width: 48px; height: 48px; background: #fff; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,.45);
+  }
+
+  /* Badges */
+  .vn-bl, .vn-br {
+    position: absolute; z-index: 4; top: 18px;
+    padding: 5px 14px; border-radius: 999px;
+    font-size: .7rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+  }
+  .vn-bl { left: 18px; background: rgba(175,50,30,.92); color: #fff; }
+  .vn-br { right: 18px; background: rgba(15,100,45,.92); color: #fff; }
+
+  /* Bottom nav */
+  .vn-nav { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 36px; }
+  .vn-arrow {
+    width: 48px; height: 48px; border-radius: 50%;
+    background: rgba(255,255,255,.08); border: 1.5px solid rgba(255,255,255,.14);
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: all .22s;
+  }
+  .vn-arrow:hover { background: rgba(76,175,119,.28); border-color: var(--c-leaf); }
+  .vn-dots { display: flex; align-items: center; gap: 8px; }
+  .vn-dot { width: 8px; height: 8px; border-radius: 999px; background: rgba(255,255,255,.22); cursor: pointer; transition: all .3s; }
+  .vn-dot.on { background: var(--c-leaf); width: 28px; }
+  .vn-hint {
+    text-align: center; margin-top: 16px;
+    font-size: .72rem; color: rgba(255,255,255,.28); letter-spacing: .04em;
+    display: flex; align-items: center; justify-content: center; gap: 6px;
+  }
+  </style>
+</head>
+<body>
+
+<!-- Mobile Menu -->
+<div id="mmenu" role="dialog" aria-modal="true">
+  <button class="mmenu-x" onclick="mm()" aria-label="Schließen">
+    <span class="material-symbols-rounded" style="font-size:32px">close</span>
+  </button>
+  <a href="#ueber-uns" onclick="mm()">Über uns</a>
+  <a href="#leistungen" onclick="mm()">Leistungen</a>
+  <a href="#warum-wir" onclick="mm()">Warum wir</a>
+  <a href="#arbeitsweise" onclick="mm()">Ablauf</a>
+  <a href="#referenzen" onclick="mm()">Referenzen</a>
+  <a href="#kontakt" onclick="mm()">Kontakt</a>
+</div>
+
+<!-- Nav -->
+<header id="nav">
+  <div class="wrap">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Altin <span>&</span> Jannis</a>
+      <ul class="nav-links">
+        <li><a href="#ueber-uns">Über uns</a></li>
+        <li><a href="#leistungen">Leistungen</a></li>
+        <li><a href="#warum-wir">Warum wir</a></li>
+        <li><a href="#arbeitsweise">Ablauf</a></li>
+        <li><a href="#referenzen">Referenzen</a></li>
+        <li><a href="#kontakt" class="nav-cta">Anfrage stellen</a></li>
+      </ul>
+      <button class="nav-burger" onclick="mm()" aria-label="Menü">
+        <span class="material-symbols-rounded" style="font-size:28px">menu</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg">
+    <img src="./images/hero-bg.jpg" alt="Gepflegter Schweizer Garten"
+      onerror="this.parentElement.style.background='linear-gradient(160deg,#071c10,#1a5c35)'"/>
+  </div>
+  <div class="hero-grad"></div>
+  <div class="hero-body">
+    <div class="wrap">
+      <div class="hero-badge" data-r>Studentisch geführt &amp; professionell</div>
+      <h1 class="hero-hl" data-r data-d="1">
+        Gartenarbeiten<br>mit <span class="accent">Herz,</span><br>Sorgfalt &amp; Einsatz.
+      </h1>
+      <p class="hero-sub" data-r data-d="2">
+        Wir sind Altin und Jannis – zwei Studenten, die neben dem Studium
+        Gartenarbeiten übernehmen und dabei sauber, zuverlässig und mit
+        echter Leidenschaft arbeiten.
+      </p>
+      <div class="hero-actions" data-r data-d="3">
+        <a href="#kontakt" class="btn-primary">
+          <span class="material-symbols-rounded" style="font-size:20px">edit_note</span>
+          Jetzt Anfrage stellen
+        </a>
+        <a href="#leistungen" class="btn-ghost">
+          Unsere Leistungen
+          <span class="material-symbols-rounded" style="font-size:18px">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true"><span></span></div>
+</section>
+
+<!-- VIDEO -->
+<section id="video-section">
+  <div class="video-scrub-card">
+    <video id="scrub-video" src="./videos/23072-720.mp4" muted playsinline preload="auto" webkit-playsinline loop></video>
+    <div class="video-progress-wrap">
+      <div class="video-progress-bar-bg">
+        <div class="video-progress-fill" id="video-progress-fill"></div>
+      </div>
+      <div class="video-progress-label">Läuft</div>
+    </div>
+  </div>
+  <div class="video-caption-col">
+    <div class="video-caption-text">
+      <div class="video-caption-title">Weil Ihr Garten Ihr natürliches Zuhause ist.</div>
+      <div class="video-caption-sub">Und wir sorgen dafür, dass es so bleibt.</div>
+    </div>
+    <div class="video-side-img">
+      <img src="./images/terrasse-led-v2.jpg" alt="Terrasse mit Steinplatten und LED-Beleuchtung"
+        onerror="this.parentElement.style.background='linear-gradient(135deg,#1a5c35,#26804d)'"/>
+      <div class="video-side-overlay">
+        <div class="video-side-label">
+          <span class="material-symbols-rounded" style="font-size:18px">light_mode</span>
+          Terrasse mit LED-Beleuchtung
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section id="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat-item" data-r>
+        <span class="stat-num">100%</span>
+        <span class="stat-lbl">Zufriedenheit</span>
+      </div>
+      <div class="stat-item" data-r data-d="2">
+        <span class="stat-num">8+</span>
+        <span class="stat-lbl">Leistungen</span>
+      </div>
+      <div class="stat-item" data-r data-d="3">
+        <span class="stat-num">2</span>
+        <span class="stat-lbl">Engagierte Studenten</span>
+      </div>
+      <div class="stat-item" data-r data-d="4">
+        <span class="stat-num">Fair</span>
+        <span class="stat-lbl">Preise</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ÜBER UNS -->
+<section id="ueber-uns">
+  <div class="wrap">
+    <div class="uu-grid">
+
+      <!-- Portraits -->
+      <div class="uu-portraits" data-r>
+        <div class="uu-portrait-card">
+          <div class="uu-portrait-img">
+            <img src="./images/jannis.png" alt="Jannis" loading="lazy"
+              onerror="this.parentElement.style.background='linear-gradient(135deg,#0f3d21,#1a5c35)'"/>
+          </div>
+          <div class="uu-portrait-meta">
+            <div class="uu-portrait-name">Jannis</div>
+            <div class="uu-portrait-role">Gartenarbeit & Handwerk</div>
+            <ul class="uu-cv">
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">cake</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Alter</span>19 Jahre</span>
+              </li>
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">sports_soccer</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Verein</span><span class="uu-cv-club"><img src="./images/sccham.png" alt="SC Cham"/>SC Cham</span></span>
+              </li>
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">favorite</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Hobbys</span>Fussball, Natur, Freiluft</span>
+              </li>
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">bolt</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Lifestyle</span>Draussen sein, aktiv bleiben</span>
+              </li>
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">emoji_emotions</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Charakter</span>Positiv, zuverlässig, ehrgeizig</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="uu-portrait-card">
+          <div class="uu-portrait-img">
+            <img src="./images/altin.png" alt="Altin" loading="lazy"
+              onerror="this.parentElement.style.background='linear-gradient(135deg,#1a5c35,#26804d)'"/>
+          </div>
+          <div class="uu-portrait-meta">
+            <div class="uu-portrait-name">Altin</div>
+            <div class="uu-portrait-role">Gartenarbeit & Handwerk</div>
+            <ul class="uu-cv">
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">cake</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Alter</span>20 Jahre</span>
+              </li>
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">sports_soccer</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Verein</span><span class="uu-cv-club"><img src="./images/zug94.png" alt="Zug 94"/>Zug 94</span></span>
+              </li>
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">favorite</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Hobbys</span>Fahrradfahren, Gym, Fussball</span>
+              </li>
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">fitness_center</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Lifestyle</span>Sport & Bewegung täglich</span>
+              </li>
+              <li>
+                <span class="uu-cv-icon"><span class="material-symbols-rounded">emoji_emotions</span></span>
+                <span class="uu-cv-content"><span class="uu-cv-label">Charakter</span>Energiegeladen, präzise, herzlich</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div>
+        <div class="sec-tag" data-r>Über uns</div>
+        <h2 class="sec-h2" data-r data-d="1">
+          Zwei Studenten.<br>Eine <em>echte Leidenschaft.</em>
+        </h2>
+        <p class="uu-text" data-r data-d="2">
+          Hallo – wir sind Jannis und Altin. Wir kennen uns seit Jahren, teilen die
+          Begeisterung fürs Handwerk und haben beschlossen, das in etwas Echtes
+          umzuwandeln: eine Gartenarbeit, auf die sich unsere Kunden wirklich verlassen können.
+          <br><br>
+          Jannis wuchs mit der Arbeit im Freien auf und bringt ein natürliches Gespür
+          für Pflanzen und Strukturen mit. Altin liebt es, mit den Händen zu gestalten –
+          präzise, ausdauernd und immer mit einem Blick fürs Gesamtbild.
+          <br><br>
+          Neben dem Studium geben wir in jedem Auftrag alles. Kein Grossbetrieb,
+          keine anonymen Teams – nur wir zwei, mit vollem Einsatz für Ihren Garten.
+        </p>
+        <div class="chips" data-r data-d="3">
+          <div class="chip">
+            <div class="chip-icon"><span class="material-symbols-rounded">verified</span></div>
+            <span>Sauber &amp; sorgfältig</span>
+          </div>
+          <div class="chip">
+            <div class="chip-icon"><span class="material-symbols-rounded">schedule</span></div>
+            <span>Zuverlässig &amp; pünktlich</span>
+          </div>
+          <div class="chip">
+            <div class="chip-icon"><span class="material-symbols-rounded">bolt</span></div>
+            <span>Motiviert &amp; fleißig</span>
+          </div>
+          <div class="chip">
+            <div class="chip-icon"><span class="material-symbols-rounded">favorite</span></div>
+            <span>Mit echter Sorgfalt</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LEISTUNGEN -->
+<section id="leistungen">
+  <div class="wrap">
+    <div class="sec-center">
+      <div class="sec-tag" data-r style="justify-content:center">Was wir anbieten</div>
+      <h2 class="sec-title-c" data-r data-d="1">Unsere Leistungen</h2>
+      <p class="sec-sub-c" data-r data-d="2">Von der regelmäßigen Gartenpflege bis zu handwerklichen Außenarbeiten – flexibel, zuverlässig, mit Sorgfalt.</p>
+    </div>
+
+    <div class="bento">
+      <div class="bc b7" data-r>
+        <div class="bc-img"><img src="./images/rasen.jpg" alt="Rasen mähen" loading="lazy" onerror="this.parentElement.style.background='#1a5c35'"/></div>
+        <div class="bc-ov"></div>
+        <div class="bc-content">
+          <div class="bc-icon"><span class="material-symbols-rounded">grass</span></div>
+          <div class="bc-title">Rasen mähen</div>
+          <div class="bc-desc">Präziser Schnitt für einen gepflegten Rasen – wöchentlich oder nach Bedarf.</div>
+        </div>
+      </div>
+
+      <div class="bc b5" data-r data-d="1">
+        <div class="bc-img"><img src="./images/hecken.jpg" alt="Hecken schneiden" loading="lazy" onerror="this.parentElement.style.background='#0f3d21'"/></div>
+        <div class="bc-ov"></div>
+        <div class="bc-content">
+          <div class="bc-icon"><span class="material-symbols-rounded">content_cut</span></div>
+          <div class="bc-title">Hecken schneiden</div>
+          <div class="bc-desc">Saubere Konturen, gesunde Pflanzen – mit Auge fürs Detail.</div>
+        </div>
+      </div>
+
+      <div class="bc b5" data-r>
+        <div class="bc-img"><img src="./images/unkraut.jpg" alt="Unkraut entfernen" loading="lazy" onerror="this.parentElement.style.background='#071c10'"/></div>
+        <div class="bc-ov"></div>
+        <div class="bc-content">
+          <div class="bc-icon"><span class="material-symbols-rounded">yard</span></div>
+          <div class="bc-title">Unkraut entfernen</div>
+          <div class="bc-desc">Vollständig, inkl. Wurzel – dauerhaft sauber.</div>
+        </div>
+      </div>
+
+      <div class="bc b7" data-r data-d="1">
+        <div class="bc-img"><img src="./images/gartenpflege.jpg" alt="Gartenpflege" loading="lazy" onerror="this.parentElement.style.background='#1a5c35'"/></div>
+        <div class="bc-ov"></div>
+        <div class="bc-content">
+          <div class="bc-icon"><span class="material-symbols-rounded">eco</span></div>
+          <div class="bc-title">Gartenpflege allgemein</div>
+          <div class="bc-desc">Rundum-Betreuung: schneiden, pflegen, düngen – alles aus einer Hand.</div>
+        </div>
+      </div>
+
+      <div class="bc b4" data-r>
+        <div class="bc-img"><img src="./images/platten.jpg" alt="Platten verlegen" loading="lazy" onerror="this.parentElement.style.background='#0f3d21'"/></div>
+        <div class="bc-ov"></div>
+        <div class="bc-content">
+          <div class="bc-icon"><span class="material-symbols-rounded">grid_view</span></div>
+          <div class="bc-title">Platten verlegen</div>
+          <div class="bc-desc">Wege und Terrassen mit fachgerechtem Unterbau.</div>
+        </div>
+      </div>
+
+      <div class="bc b4" data-r data-d="1">
+        <div class="bc-img"><img src="./images/aufraeum.jpg" alt="Aufräumarbeiten" loading="lazy" onerror="this.parentElement.style.background='#071c10'"/></div>
+        <div class="bc-ov"></div>
+        <div class="bc-content">
+          <div class="bc-icon"><span class="material-symbols-rounded">cleaning_services</span></div>
+          <div class="bc-title">Aufräumarbeiten</div>
+          <div class="bc-desc">Laub, Schnittgut, Abfall – wir hinterlassen alles ordentlich.</div>
+        </div>
+      </div>
+
+      <div class="bc b4" data-r data-d="2">
+        <div class="bc-img"><img src="./images/handwerk.jpg" alt="Handwerkliche Arbeiten" loading="lazy" onerror="this.parentElement.style.background='#1a5c35'"/></div>
+        <div class="bc-ov"></div>
+        <div class="bc-content">
+          <div class="bc-icon"><span class="material-symbols-rounded">construction</span></div>
+          <div class="bc-title">Handwerkliche Arbeiten</div>
+          <div class="bc-desc">Kleinere Außenarbeiten – nach Absprache.</div>
+        </div>
+      </div>
+
+      <div class="bc-solo" data-r>
+        <div>
+          <h3 class="bc-solo-h">Individuelle Gartenarbeiten nach Absprache</h3>
+          <p class="bc-solo-p">Haben Sie eine besondere Aufgabe? Kein Problem – sprechen Sie uns an. Wir sind flexibel und finden gemeinsam eine Lösung.</p>
+        </div>
+        <a href="#kontakt" class="btn-primary" style="flex-shrink:0">
+          Anfrage stellen
+          <span class="material-symbols-rounded" style="font-size:18px">arrow_forward</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WARUM WIR -->
+<section id="warum-wir">
+  <div class="ww-deco1" aria-hidden="true"></div>
+  <div class="ww-deco2" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="sec-center">
+      <div class="sec-tag" data-r style="justify-content:center">Unsere Stärken</div>
+      <h2 class="sec-title-c" data-r data-d="1">Warum Altin &amp; Jannis?</h2>
+      <p class="sec-sub-c" data-r data-d="2">Wir sind jung, motiviert und nehmen unsere Arbeit ernst. Hier sind die Gründe, warum Kunden uns vertrauen.</p>
+    </div>
+    <div class="ww-grid">
+      <div class="ww-card" data-r>
+        <div class="ww-icon"><span class="material-symbols-rounded">verified</span></div>
+        <h3>Sauber &amp; sorgfältig</h3>
+        <p>Wir arbeiten so, als wäre es unser eigener Garten – mit Liebe zum Detail und ohne Kompromisse.</p>
+      </div>
+      <div class="ww-card" data-r data-d="1">
+        <div class="ww-icon"><span class="material-symbols-rounded">schedule</span></div>
+        <h3>Zuverlässig &amp; pünktlich</h3>
+        <p>Abmachungen sind für uns verbindlich. Wer einen Termin mit uns hat, kann sich darauf verlassen.</p>
+      </div>
+      <div class="ww-card" data-r data-d="2">
+        <div class="ww-icon"><span class="material-symbols-rounded">bolt</span></div>
+        <h3>Motiviert &amp; fleißig</h3>
+        <p>Wir lieben echte, körperliche Arbeit. Kein Auftrag ist zu gross oder zu anstrengend.</p>
+      </div>
+      <div class="ww-card" data-r data-d="3">
+        <div class="ww-icon"><span class="material-symbols-rounded">payments</span></div>
+        <h3>Faire Preise</h3>
+        <p>Professionelle Arbeit zu Preisen, die für Privatpersonen und Familien fair und transparent sind.</p>
+      </div>
+      <div class="ww-card" data-r data-d="4">
+        <div class="ww-icon"><span class="material-symbols-rounded">chat</span></div>
+        <h3>Persönliche Kommunikation</h3>
+        <p>Kein Call-Center, keine langen Wartezeiten – Sie sprechen immer direkt mit uns.</p>
+      </div>
+      <div class="ww-card" data-r data-d="5">
+        <div class="ww-icon"><span class="material-symbols-rounded">handshake</span></div>
+        <h3>Respekt &amp; Vertrauen</h3>
+        <p>Ihr Zuhause und Ihr Garten verdienen Respekt. Wir gehen sorgsam mit Ihrem Eigentum um.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARBEITSWEISE -->
+<section id="arbeitsweise">
+  <div class="wrap">
+    <div class="sec-center">
+      <div class="sec-tag" data-r style="justify-content:center">Unser Ablauf</div>
+      <h2 class="sec-title-c" data-r data-d="1">So einfach funktioniert es</h2>
+      <p class="sec-sub-c" data-r data-d="2">Von der ersten Nachricht bis zum gepflegten Garten – unkompliziert und transparent.</p>
+    </div>
+    <div class="aw-wrap">
+      <div class="aw-line" aria-hidden="true"></div>
+      <div class="aw-steps">
+        <div class="aw-step" data-r>
+          <div class="aw-num">1</div>
+          <div class="aw-title">Kontakt aufnehmen</div>
+          <div class="aw-desc">Sie schreiben uns per Telefon oder E-Mail.</div>
+        </div>
+        <div class="aw-step" data-r data-d="1">
+          <div class="aw-num">2</div>
+          <div class="aw-title">Arbeit besprechen</div>
+          <div class="aw-desc">Wir klären gemeinsam, was gewünscht wird.</div>
+        </div>
+        <div class="aw-step" data-r data-d="2">
+          <div class="aw-num">3</div>
+          <div class="aw-title">Garten besichtigen</div>
+          <div class="aw-desc">Falls nötig, schauen wir uns den Garten an.</div>
+        </div>
+        <div class="aw-step" data-r data-d="3">
+          <div class="aw-num">4</div>
+          <div class="aw-title">Arbeit erledigen</div>
+          <div class="aw-desc">Sauber, zuverlässig und ohne Aufwand für Sie.</div>
+        </div>
+        <div class="aw-step" data-r data-d="4">
+          <div class="aw-num">5</div>
+          <div class="aw-title">Zufriedener Kunde</div>
+          <div class="aw-desc">Sie freuen sich über Ihren gepflegten Garten.</div>
+        </div>
+      </div>
+    </div>
+    <div class="aw-cta" data-r data-d="5">
+      <a href="#kontakt" class="btn-primary" style="flex-shrink:0">
+        Jetzt Anfrage stellen
+        <span class="material-symbols-rounded" style="font-size:18px">arrow_forward</span>
+      </a>
+      <span class="aw-cta-note">Kostenlos &amp; unverbindlich –<br>wir melden uns schnell zurück.</span>
+    </div>
+  </div>
+</section>
+
+<!-- VORHER & NACHHER -->
+<section id="referenzen">
+  <div class="vn-header wrap">
+    <div class="sec-tag" data-r>Referenzen</div>
+    <h2 class="sec-h2" data-r data-d="1">Vorher &amp; <em>Nachher.</em></h2>
+    <p class="sec-sub" data-r data-d="2">Was wir anpacken, sieht man – vorher und nachher.</p>
+  </div>
+
+  <div class="vn-tabs" data-r data-d="3">
+    <button class="vn-tab active" data-vn-tab="0">Rasenpflege</button>
+    <button class="vn-tab" data-vn-tab="1">Heckenschnitt</button>
+    <button class="vn-tab" data-vn-tab="2">Unkraut &amp; Beet</button>
+    <button class="vn-tab" data-vn-tab="3">Steinplatten</button>
+    <button class="vn-tab" data-vn-tab="4">Aufräumung</button>
+  </div>
+
+  <div class="vn-carousel">
+    <div class="vn-track" id="vn-track">
+
+      <div class="vn-slide">
+        <div class="vn-cat">Rasenpflege</div>
+        <div class="vn-comp">
+          <img class="vn-after"  src="./images/nachher-rasen.jpg"   alt="Rasen nachher" loading="lazy"/>
+          <img class="vn-before" src="./images/vorher-rasen.jpg"    alt="Rasen vorher"  loading="lazy"/>
+          <div class="vn-div"><div class="vn-div-handle"><span class="material-symbols-rounded" style="font-size:20px;color:#0b1e12">swap_horiz</span></div></div>
+          <span class="vn-bl">Vorher</span><span class="vn-br">Nachher</span>
+        </div>
+      </div>
+
+      <div class="vn-slide">
+        <div class="vn-cat">Heckenschnitt</div>
+        <div class="vn-comp">
+          <img class="vn-after"  src="./images/nachher-hecke.jpg"   alt="Hecke nachher" loading="lazy"/>
+          <img class="vn-before" src="./images/vorher-hecke.jpg"    alt="Hecke vorher"  loading="lazy"/>
+          <div class="vn-div"><div class="vn-div-handle"><span class="material-symbols-rounded" style="font-size:20px;color:#0b1e12">swap_horiz</span></div></div>
+          <span class="vn-bl">Vorher</span><span class="vn-br">Nachher</span>
+        </div>
+      </div>
+
+      <div class="vn-slide">
+        <div class="vn-cat">Unkraut &amp; Beet</div>
+        <div class="vn-comp">
+          <img class="vn-after"  src="./images/nachher-beet.jpg"    alt="Beet nachher" loading="lazy"/>
+          <img class="vn-before" src="./images/vorher-beet.jpg"     alt="Beet vorher"  loading="lazy"/>
+          <div class="vn-div"><div class="vn-div-handle"><span class="material-symbols-rounded" style="font-size:20px;color:#0b1e12">swap_horiz</span></div></div>
+          <span class="vn-bl">Vorher</span><span class="vn-br">Nachher</span>
+        </div>
+      </div>
+
+      <div class="vn-slide">
+        <div class="vn-cat">Steinplatten &amp; Wege</div>
+        <div class="vn-comp">
+          <img class="vn-after"  src="./images/nachher-platten.jpg" alt="Platten nachher" loading="lazy"/>
+          <img class="vn-before" src="./images/vorher-platten.jpg"  alt="Platten vorher"  loading="lazy"/>
+          <div class="vn-div"><div class="vn-div-handle"><span class="material-symbols-rounded" style="font-size:20px;color:#0b1e12">swap_horiz</span></div></div>
+          <span class="vn-bl">Vorher</span><span class="vn-br">Nachher</span>
+        </div>
+      </div>
+
+      <div class="vn-slide">
+        <div class="vn-cat">Gartenaufräumung</div>
+        <div class="vn-comp">
+          <img class="vn-after"  src="./images/nachher-aufraeum.jpg" alt="Aufräumen nachher" loading="lazy"/>
+          <img class="vn-before" src="./images/vorher-aufraeum.jpg"  alt="Aufräumen vorher"  loading="lazy"/>
+          <div class="vn-div"><div class="vn-div-handle"><span class="material-symbols-rounded" style="font-size:20px;color:#0b1e12">swap_horiz</span></div></div>
+          <span class="vn-bl">Vorher</span><span class="vn-br">Nachher</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="vn-nav" data-r data-d="4">
+    <button class="vn-arrow" id="vn-prev" aria-label="Vorheriges"><span class="material-symbols-rounded">arrow_back</span></button>
+    <div class="vn-dots" id="vn-dots"></div>
+    <button class="vn-arrow" id="vn-next" aria-label="Nächstes"><span class="material-symbols-rounded">arrow_forward</span></button>
+  </div>
+  <div class="vn-hint">
+    <span class="material-symbols-rounded" style="font-size:15px">swap_horiz</span>
+    Teiler ziehen — Vorher / Nachher vergleichen
+  </div>
+</section>
+
+<!-- KONTAKT -->
+<section id="kontakt">
+  <div class="wrap">
+    <div class="ko-grid">
+      <div>
+        <div class="sec-tag" data-r>Kontakt</div>
+        <h2 class="ko-h2" data-r data-d="1">Bereit für einen<br>schöneren Garten?</h2>
+        <p class="ko-p" data-r data-d="2">Schreiben Sie uns – wir melden uns schnell zurück und besprechen gemeinsam, was wir für Ihren Garten tun können.</p>
+        <div class="ko-det" data-r data-d="3">
+          <div class="ko-det-icon"><span class="material-symbols-rounded">phone</span></div>
+          <div><div class="ko-det-lbl">Telefon</div><div class="ko-det-val">+41 XX XXX XX XX</div></div>
+        </div>
+        <div class="ko-det" data-r data-d="4">
+          <div class="ko-det-icon"><span class="material-symbols-rounded">mail</span></div>
+          <div><div class="ko-det-lbl">E-Mail</div><div class="ko-det-val">kontakt@beispiel.ch</div></div>
+        </div>
+        <div class="ko-det" data-r data-d="5">
+          <div class="ko-det-icon"><span class="material-symbols-rounded">location_on</span></div>
+          <div><div class="ko-det-lbl">Einsatzgebiet</div><div class="ko-det-val">Schweiz – Raum Bern / Zürich</div></div>
+        </div>
+      </div>
+
+      <div class="form-box" data-r data-d="2">
+        <h3>Anfrage stellen</h3>
+        <form onsubmit="fs(event)" novalidate>
+          <div class="f-row">
+            <div class="f-group">
+              <label for="fn">Name</label>
+              <input type="text" id="fn" placeholder="Ihr Name" required/>
+            </div>
+            <div class="f-group">
+              <label for="ft">Telefon</label>
+              <input type="tel" id="ft" placeholder="+41 XX XXX XX XX"/>
+            </div>
+          </div>
+          <div class="f-group">
+            <label for="fe">E-Mail</label>
+            <input type="email" id="fe" placeholder="ihre@email.ch" required/>
+          </div>
+          <div class="f-group">
+            <label for="fm">Nachricht</label>
+            <textarea id="fm" placeholder="Was kann ich für Ihren Garten tun?"></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <span class="material-symbols-rounded" style="font-size:20px">send</span>
+            Anfrage senden
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-logo">Altin <span>&</span> Jannis</div>
+        <p class="ft-p">Zwei Studenten, die Gartenarbeit mit Herz, Sorgfalt und echtem Einsatz betreiben. Ihr Garten ist bei uns in den besten Händen.</p>
+        <div class="ft-tagline">„Gartenarbeiten mit Sorgfalt und Leidenschaft."</div>
+      </div>
+      <div class="ft-col">
+        <h4>Leistungen</h4>
+        <nav>
+          <a href="#leistungen">Rasen mähen</a>
+          <a href="#leistungen">Hecken schneiden</a>
+          <a href="#leistungen">Gartenpflege</a>
+          <a href="#leistungen">Platten verlegen</a>
+          <a href="#leistungen">Aufräumarbeiten</a>
+          <a href="#leistungen">Handwerkliche Arbeiten</a>
+        </nav>
+      </div>
+      <div class="ft-col">
+        <h4>Kontakt</h4>
+        <nav>
+          <a href="#kontakt">Anfrage stellen</a>
+          <a href="tel:+41XXXXXXXX">+41 XX XXX XX XX</a>
+          <a href="mailto:kontakt@beispiel.ch">kontakt@beispiel.ch</a>
+          <a href="#ueber-uns">Über uns</a>
+        </nav>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p>© 2025 <span>Altin &amp; Jannis</span> – Gartenarbeiten mit Sorgfalt und Leidenschaft.</p>
+      <p>Schweiz</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── Reveal via IntersectionObserver ──
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('on'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('[data-r]').forEach(el => observer.observe(el));
+
+  // ── Nav ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('stuck', window.scrollY > window.innerHeight * 0.5);
+  }, { passive: true });
+
+  // ── Video play/pause ──
+  const scrubVideo = document.getElementById('scrub-video');
+  const progFill   = document.getElementById('video-progress-fill');
+  const videoSec   = document.getElementById('video-section');
+  if (scrubVideo && videoSec) {
+    const vObs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) scrubVideo.play().catch(() => {});
+      else scrubVideo.pause();
+    }, { threshold: 0.4 });
+    vObs.observe(videoSec);
+    scrubVideo.addEventListener('timeupdate', () => {
+      if (scrubVideo.duration && progFill)
+        progFill.style.width = (scrubVideo.currentTime / scrubVideo.duration * 100) + '%';
+    });
+  }
+
+  // ── Smooth-Scroll für Anchor-Links ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const id = a.getAttribute('href').slice(1);
+      const target = id ? document.getElementById(id) : null;
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('mmenu').classList.remove('open');
+    });
+  });
+
+  // ── Mobile Menu ──
+  function mm() { document.getElementById('mmenu').classList.toggle('open'); }
+
+  // ── Referenzen: Carousel + Comparison Sliders ──
+  (function() {
+    const TOTAL = 5;
+    let cur = 0;
+    let compDragging = false;
+
+    const track = document.getElementById('vn-track');
+    const dotsEl = document.getElementById('vn-dots');
+    if (!track) return;
+
+    for (let i = 0; i < TOTAL; i++) {
+      const d = document.createElement('div');
+      d.className = 'vn-dot' + (i === 0 ? ' on' : '');
+      d.addEventListener('click', () => go(i));
+      dotsEl.appendChild(d);
+    }
+
+    function go(idx) {
+      cur = ((idx % TOTAL) + TOTAL) % TOTAL;
+      track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+      dotsEl.querySelectorAll('.vn-dot').forEach(function(d, i) { d.classList.toggle('on', i === cur); });
+      document.querySelectorAll('[data-vn-tab]').forEach(function(t) { t.classList.toggle('active', +t.dataset.vnTab === cur); });
+    }
+
+    document.getElementById('vn-prev').addEventListener('click', function() { go(cur - 1); });
+    document.getElementById('vn-next').addEventListener('click', function() { go(cur + 1); });
+    document.querySelectorAll('[data-vn-tab]').forEach(function(t) {
+      t.addEventListener('click', function() { go(+t.dataset.vnTab); });
+    });
+
+    // Carousel swipe (skip when comparison slider is active)
+    var swipeX = 0;
+    track.addEventListener('touchstart', function(e) {
+      if (!compDragging) swipeX = e.touches[0].clientX;
+    }, { passive: true });
+    track.addEventListener('touchend', function(e) {
+      if (compDragging) return;
+      var dx = e.changedTouches[0].clientX - swipeX;
+      if (Math.abs(dx) > 52) go(cur + (dx < 0 ? 1 : -1));
+    }, { passive: true });
+
+    // Comparison sliders
+    document.querySelectorAll('.vn-comp').forEach(function(comp) {
+      var before = comp.querySelector('.vn-before');
+      var div    = comp.querySelector('.vn-div');
+      var dragging = false;
+
+      function setPos(clientX) {
+        var r = comp.getBoundingClientRect();
+        var pct = Math.max(4, Math.min(96, (clientX - r.left) / r.width * 100));
+        before.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+        div.style.left = pct + '%';
+      }
+
+      comp.addEventListener('mousedown', function(e) { dragging = true; setPos(e.clientX); });
+      window.addEventListener('mousemove', function(e) { if (dragging) setPos(e.clientX); });
+      window.addEventListener('mouseup', function() { dragging = false; });
+
+      comp.addEventListener('touchstart', function(e) {
+        dragging = true; compDragging = true;
+        setPos(e.touches[0].clientX);
+      }, { passive: true });
+      comp.addEventListener('touchmove', function(e) {
+        if (dragging) { e.stopPropagation(); setPos(e.touches[0].clientX); }
+      }, { passive: false });
+      comp.addEventListener('touchend', function() {
+        dragging = false;
+        requestAnimationFrame(function() { compDragging = false; });
+      });
+    });
+  })();
+
+  // ── Formular ──
+  function fs(e) {
+    e.preventDefault();
+    const b = e.target.querySelector('.btn-submit');
+    const o = b.innerHTML;
+    b.innerHTML = '<span class="material-symbols-rounded" style="font-size:20px">check_circle</span> Gesendet!';
+    b.style.background = 'var(--c-mint)';
+    setTimeout(() => { b.innerHTML = o; b.style.background = ''; e.target.reset(); }, 3000);
+  }
+</script>
+</body>
+</html>

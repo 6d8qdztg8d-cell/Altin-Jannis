@@ -1,0 +1,9 @@
+{
+  "prompt": "Ultra-realistic professional DSLR photograph of a modern outdoor garden terrace at dusk. Large format natural stone slabs (Naturstein-Steinplatten), dark grey granite texture with subtle veining, precisely laid in a clean geometric pattern. Warm amber LED strip lights recessed along the edges and joints of the stone slabs, casting a soft golden glow across the stone surface. The LED lighting runs along the perimeter of the terrace and between select slab joints, creating low-profile accent lines of warm light. Evening atmosphere, blue-hour sky visible in background, rich deep blue with orange horizon gradient. Lush green garden surroundings — trimmed hedges, ornamental grasses gently blurred in background. High-end residential outdoor living space. 24mm wide-angle lens, f/8, ISO 400, long exposure capturing the warm LED glow. Tack sharp stone texture in foreground, smooth bokeh in background plants. No people. Photorealistic architectural photography. Do not add any CGI or illustrated elements.",
+  "negative_prompt": "cartoon, CGI, illustration, plastic, overexposed, blown highlights, ugly, cheap materials, dirty, overgrown, blurry foreground, no people, text, watermark, logo, distortion",
+  "api_parameters": {
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "output_format": "jpg"
+  }
+}

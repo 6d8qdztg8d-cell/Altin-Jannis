@@ -1,0 +1,17 @@
+Creating task via Kie.ai API...
+Task created successfully. Task ID: cd1001c48eef14beeb4845c75ae04f8a. Polling...
+Poll 1: state = waiting
+Poll 2: state = waiting
+Poll 3: state = waiting
+Poll 4: state = waiting
+Poll 5: state = waiting
+Poll 6: state = waiting
+Poll 7: state = waiting
+Poll 8: state = waiting
+Poll 9: state = waiting
+Poll 10: state = waiting
+Poll 11: state = waiting
+Poll 12: state = waiting
+Poll 13: state = success
+Downloading image from https://tempfile.aiquickdraw.com/image-format-converter/1778509291465-ccwaxred8sv.jpg
+Successfully saved to /Users/altinramadani/Desktop/Gärtner_Altin&Jannis/images/gartenpflege.jpg

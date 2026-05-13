@@ -1,0 +1,9 @@
+{
+  "prompt": "Real photo of a normal residential outdoor terrace in the evening. Plain grey concrete or natural stone paving slabs, average size suburban garden. Simple warm LED strip lights placed along the base of a low garden wall or along the edge of the terrace, glowing softly amber-warm. Dusk sky, deep blue hour, orange fading at the horizon. A simple wooden garden table and two chairs on the terrace. Potted plants on the side. Ordinary family home in background, normal house facade. Warm inviting atmosphere. Shot with a regular camera, slightly wide angle. Realistic, no drama, no luxury mansion, no over-the-top design. Just a cozy normal garden terrace at sunset with nice subtle LED accent lighting along the stone edge. Documentary style photography.",
+  "negative_prompt": "sci-fi, futuristic, glowing lines, neon, luxury mansion, over-designed, CGI, illustration, cartoon, floating lights, unrealistic, dramatic, cinematic VFX, multiple light beams, laser lines, too many LED lines, grid patterns on floor, fake, plastic",
+  "api_parameters": {
+    "aspect_ratio": "16:9",
+    "resolution": "2K",
+    "output_format": "jpg"
+  }
+}
